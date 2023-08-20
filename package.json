@@ -12,18 +12,26 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.2.5",
+    "@gitbeaker/rest": "^39.11.0",
+    "@salte-auth/gitlab": "^3.1.0",
+    "@salte-auth/popup": "^3.1.0",
+    "@salte-auth/salte-auth": "^3.0.10",
+    "antd": "^5.8.4",
+    "axios": "^1.4.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-simple-oauth2-login": "^0.5.4"
   },
   "devDependencies": {
-    "@types/react": "^18.2.15",
+    "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react-swc": "^3.3.2",
-    "eslint": "^8.45.0",
-    "eslint-plugin-react": "^7.32.2",
+    "eslint": "^8.47.0",
+    "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "gh-pages": "^6.0.0",
-    "vite": "^4.4.5"
+    "vite": "^4.4.9"
   }
 }
