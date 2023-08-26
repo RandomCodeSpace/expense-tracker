@@ -1,11 +1,8 @@
 import { Button, DatePicker, Input, InputNumber, Select, Space } from "antd";
 import { categories, handleDateChange } from "./common/Data.jsx";
 import dayjs from "dayjs";
-import { useLiveStorageState } from "./common/useLiveSessionState.jsx";
 
 export const AddData = () => {
-  const [, setOpen] = useLiveStorageState("openAddModel", false);
-
   const categoryList = () => {
     let map = [];
     categories.map((value) => {
@@ -43,14 +40,6 @@ export const AddData = () => {
         <br />
         <br />
         <Space>
-          <Button
-            onClick={() => {
-              setOpen(false);
-            }}
-            size={"large"}
-          >
-            Cancel
-          </Button>
           <Button type={"primary"} size={"large"}>
             Add
           </Button>
