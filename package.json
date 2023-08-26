@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "predev": "npm install",
+    "dev": "vite --force",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "build": "vite build",
@@ -21,6 +22,7 @@
     "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.10.1",
     "react-simple-oauth2-login": "^0.5.4"
   },
   "devDependencies": {
@@ -32,6 +34,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "gh-pages": "^6.0.0",
+    "prettier": "^3.0.2",
     "vite": "^4.4.9"
-  }
+  },
+  "main": "main.jsx"
 }

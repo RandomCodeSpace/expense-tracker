@@ -1,23 +1,39 @@
-import {useState} from 'react';
-import {DatePicker, message} from 'antd';
-import './App.css';
 import GitLabOAuth from "./common/AppLogin.jsx";
+import { Card, FloatButton, Tabs } from "antd";
+import { PieChartOutlined, PlusOutlined } from "@ant-design/icons";
+import { Summary } from "./Summary.jsx";
 
 export const App = () => {
-    const [date, setDate] = useState(null);
-    const [messageApi, contextHolder] = message.useMessage();
-    const handleChange = (value) => {
-        messageApi.info(`Selected Date: ${value ? value.format('YYYY-MM-DD') : 'None'}`);
-        setDate(value);
-    };
-    return (
-        <div style={{width: 400, margin: '100px auto'}}>
-            <DatePicker onChange={handleChange}/>
-            <div style={{marginTop: 16}}>
-                Selected Date: {date ? date.format('YYYY-MM-DD') : 'None'}
-            </div>
-            {contextHolder}
-            <GitLabOAuth/>
-        </div>
-    );
+  const items = [
+    {
+      key: 1,
+      label: (
+        <span>
+          <PieChartOutlined />
+          Summary
+        </span>
+      ),
+      children: <Summary />,
+    },
+  ];
+
+  return (
+    <>
+      <Card>
+        <FloatButton
+          icon={<PlusOutlined />}
+          description="Add"
+          shape={"square"}
+          type={"primary"}
+        />
+        <Tabs
+          defaultActiveKey="2"
+          type={"card"}
+          centered
+          items={items}
+          tabBarExtraContent={<GitLabOAuth />}
+        />
+      </Card>
+    </>
+  );
 };
