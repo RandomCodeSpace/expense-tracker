@@ -4,6 +4,7 @@ import { PieChartOutlined, PlusOutlined } from "@ant-design/icons";
 import { Summary } from "./Summary.jsx";
 import { useState } from "react";
 import { AddData } from "./AddData.jsx";
+import { useLiveStorageState } from "./common/useLiveSessionState.jsx";
 
 export const App = () => {
   const items = [
@@ -19,7 +20,7 @@ export const App = () => {
     },
   ];
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useLiveStorageState("openAddModel", false);
   const [confirmLoading, setConfirmLoading] = useState(false);
 
   const showModal = () => {
