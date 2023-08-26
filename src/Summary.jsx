@@ -1,79 +1,26 @@
-import { Card, Col, DatePicker, message, Row } from "antd";
-import {
-  CoffeeOutlined,
-  ForkOutlined,
-  FunctionOutlined,
-  NotificationOutlined,
-} from "@ant-design/icons";
+import { Card, Col, DatePicker, Row } from "antd";
 import dayjs from "dayjs";
+import { categories, handleDateChange } from "./common/Data.jsx";
 
 export const Summary = () => {
-  const [messageApi, contextHolder] = message.useMessage();
-
-  const items = [
-    {
-      icon: <CoffeeOutlined />,
-      title: <span>Food</span>,
-      data: <span>Summary for Food Expense</span>,
-    },
-    {
-      icon: <ForkOutlined />,
-      title: <span>Grocery</span>,
-      data: <span>Summary for Grocery Expense</span>,
-    },
-    {
-      icon: <NotificationOutlined />,
-      title: <span>Entertainment</span>,
-      data: <span>Summary for Entertainment Expense</span>,
-    },
-    {
-      icon: <FunctionOutlined />,
-      title: <span>Miscellaneous</span>,
-      data: <span>Summary for Food Expense</span>,
-    },
-    {
-      icon: <CoffeeOutlined />,
-      title: <span>Food</span>,
-      data: <span>Summary for Food Expense</span>,
-    },
-    {
-      icon: <ForkOutlined />,
-      title: <span>Grocery</span>,
-      data: <span>Summary for Grocery Expense</span>,
-    },
-    {
-      icon: <NotificationOutlined />,
-      title: <span>Entertainment</span>,
-      data: <span>Summary for Entertainment Expense</span>,
-    },
-    {
-      icon: <FunctionOutlined />,
-      title: <span>Miscellaneous</span>,
-      data: <span>Summary for Food Expense</span>,
-    },
-  ];
-  const handleChange = (value) => {
-    messageApi.destroy();
-    messageApi.info(
-      `Selected Date: ${value ? value.format("YYYY-MM-DD") : "None"}`,
-    );
-  };
-
   return (
     <>
-      {contextHolder}
       <Row gutter={12} justify="center" align="top">
         <DatePicker
+          style={{ width: "100%" }}
+          size={"large"}
           defaultValue={dayjs(new Date())}
           bordered={true}
-          onChange={handleChange}
+          onChange={(value) => {
+            handleDateChange(value);
+          }}
         />
       </Row>
       <br />
-      {items.map((value, index) => {
+      {categories.map((value, index) => {
         return (
           <div key={index}>
-            <Row gutter={16} justify="center" align="top">
+            <Row gutter={18} justify="center" align="top">
               <Col span={24}>
                 <Card
                   title={

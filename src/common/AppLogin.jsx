@@ -2,24 +2,18 @@ import { SalteAuth } from "@salte-auth/salte-auth";
 import { GitLab } from "@salte-auth/gitlab";
 import { Popup } from "@salte-auth/popup";
 import axios from "axios";
-import { useLiveSessionState } from "./useLiveSessionState.jsx";
+import { useLiveStorageState } from "./useLiveSessionState.jsx";
 import { Gitlab } from "@gitbeaker/rest";
 import { Button } from "antd";
-
-const GITLAB_APP_ID =
-  "821d3be84f59e96edf5cc524838ffa8e692dbc3d1397ebe4745230f4b60e120e";
-const GITLAB_CALLBACK_URL = window.location.href;
-const gitlabOAuthURL = `https://gitlab.com/oauth/token?client_id=${GITLAB_APP_ID}&redirect_uri=${encodeURIComponent(
-  GITLAB_CALLBACK_URL,
-)}&grant_type=authorization_code&scope=api openid`;
+import { GITLAB_APP_ID, GITLAB_CALLBACK_URL, gitlabOAuthURL } from "./Data.jsx";
 
 const GitLabOAuth = () => {
-  const [authToken, setAuthToken] = useLiveSessionState("authToken", {
+  const [authToken, setAuthToken] = useLiveStorageState("authToken", {
     token: "",
     authenticated: false,
     buttonText: "Login",
   });
-  const [gitlabUser, setGitlabUser] = useLiveSessionState("gitlabUser", {});
+  const [gitlabUser, setGitlabUser] = useLiveStorageState("gitlabUser", {});
   const auth = new SalteAuth({
     providers: [
       new GitLab({
